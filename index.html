@@ -302,16 +302,41 @@
   .expect-foot{margin-top:28px;font-size:12.5px;color:var(--ink-soft);}
 
   /* ---------- VERTICAL BAR CHARTS ---------- */
-  .vchart-wrap{display:flex;gap:40px;align-items:flex-start;justify-content:center;padding-top:6px;flex-wrap:wrap;}
-  .vbar-col{display:flex;flex-direction:column;align-items:center;width:96px;}
-  .vbar-value{height:20px;font-size:14.5px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink);}
+  .vchart-wrap{display:flex;gap:28px;align-items:flex-start;justify-content:center;padding-top:6px;flex-wrap:nowrap;}
+  .vbar-col{display:flex;flex-direction:column;align-items:center;width:64px;flex-shrink:0;}
+  .vbar-value{height:20px;font-size:14.5px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap;}
   .vbar-value.you{color:var(--coral);}
   .vbar-track{height:180px;display:flex;align-items:flex-end;width:100%;margin-top:6px;}
-  .vbar{width:100%;border-radius:10px 10px 4px 4px;background:#C7C7CC;min-height:6px;}
+  .vbar{width:100%;border-radius:8px 8px 3px 3px;background:#C7C7CC;min-height:6px;}
   .vbar.you{background:linear-gradient(180deg,#ff5d7e,var(--coral));}
   .vbar.best{background:linear-gradient(180deg,#00e0d1,var(--teal));}
-  .vbar-name{height:32px;margin-top:10px;font-size:12.5px;font-weight:600;color:var(--ink-soft);text-align:center;line-height:1.3;}
+  .vbar-name{height:32px;margin-top:10px;font-size:11.5px;font-weight:600;color:var(--ink-soft);text-align:center;line-height:1.25;word-break:break-word;}
   .vbar-name.you{color:var(--coral);}
+
+  /* ---------- MOBILE RESPONSIVE ---------- */
+  @media(max-width:640px){
+    .wrap{padding:0 18px;}
+    .section-pad{padding:56px 0;}
+    .hero{padding:130px 0 60px;}
+    .section-title{font-size:26px;}
+    .section-sub{font-size:15px;}
+    .panel{padding:20px 16px;}
+    .panel-head{margin-bottom:16px;}
+    .panel-head h3{font-size:16px;}
+    .data-panels{gap:12px;}
+    .split-panels{gap:12px;}
+
+    .vchart-wrap{gap:12px;}
+    .vbar-col{width:auto;flex:1 1 0;max-width:76px;}
+    .vbar-track{height:130px;}
+    .vbar-value{font-size:12px;height:16px;}
+    .vbar-name{font-size:10px;height:auto;margin-top:6px;line-height:1.2;}
+
+    .rival-grid, .audit-grid, .expect-grid, .pillars{gap:12px;}
+    .rival-card, .audit-card, .expect-card{padding:18px;}
+    .expect-stat{font-size:30px;}
+    .cta-section{margin:0 12px;padding:44px 22px;}
+  }
 </style>
 </head>
 <body>
