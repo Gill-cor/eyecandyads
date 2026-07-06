@@ -148,19 +148,22 @@
     transition:transform .25s ease, box-shadow .25s ease;
   }
   .audit-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(0,0,0,.15);}
-  .audit-icon{
-    width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-    font-size:20px;margin-bottom:18px;
+  .audit-card{border-left:4px solid var(--line);}
+  .audit-card.sev-bad{border-left-color:var(--coral);}
+  .audit-card.sev-rebuild{border-left-color:var(--ink);}
+  .audit-card.sev-improve{border-left-color:var(--amber);}
+  .status-tag{
+    display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+    padding:6px 14px;border-radius:100px;margin-bottom:16px;
   }
+  .status-tag.bad{background:var(--coral);color:#fff;}
+  .status-tag.rebuild{background:var(--ink);color:#fff;}
+  .status-tag.improve{background:var(--amber);color:#1D1D1F;}
   .audit-card h3{font-size:19px;margin-bottom:10px;font-weight:600;}
   .audit-card p{color:var(--ink-soft);font-size:15px;line-height:1.6;}
   .audit-card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:14.5px;line-height:1.6;}
   .audit-card ul li{margin-bottom:4px;}
   .audit-card ul li::marker{color:var(--ink-soft);}
-  .tag-red{background:#FFE7EC;color:var(--coral);}
-  .tag-amber{background:#FFF1DA;color:var(--amber-deep);}
-  .tag-teal{background:#DAF7F4;color:#00908A;}
-  .tag-ink{background:#EDEDEF;color:var(--ink);}
 
   /* ---------- COMPETITORS ---------- */
   .comp-note{
@@ -181,14 +184,17 @@
   .comp-pill.you .desc{color:#c9c9cf;}
 
   /* ---------- PLAN PILLARS ---------- */
-  .pillars{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-  @media(max-width:900px){ .pillars{grid-template-columns:repeat(2,1fr);} }
-  @media(max-width:560px){ .pillars{grid-template-columns:1fr;} }
+  .pillars{margin-top:56px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  @media(max-width:760px){ .pillars{grid-template-columns:1fr;} }
   .pillar{
-    border-radius:var(--radius);padding:28px 24px;color:#fff;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end;
+    border-radius:var(--radius);padding:28px 26px;color:#fff;display:flex;flex-direction:column;justify-content:flex-start;
   }
   .pillar .num{font-size:13px;opacity:.7;font-weight:600;}
-  .pillar h3{font-size:19px;margin:14px 0 0;font-weight:600;}
+  .pillar h3{font-size:20px;margin:14px 0 16px;font-weight:600;}
+  .pillar ul{margin:0;padding-left:18px;}
+  .pillar ul li{font-size:14px;line-height:1.6;margin-bottom:8px;opacity:.92;}
+  .pillar ul li:last-child{margin-bottom:0;}
+  .pillar ul li::marker{color:rgba(255,255,255,.55);}
   .pillar.p1{background:linear-gradient(160deg,#1D1D1F,#33333A);}
   .pillar.p2{background:linear-gradient(160deg,var(--coral),#C71C42);}
   .pillar.p3{background:linear-gradient(160deg,var(--amber),#D97E00);}
@@ -233,7 +239,9 @@
   }
   .panel-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
   .panel-head h3{font-size:19px;font-weight:600;}
-  .panel-head .unit-note{font-size:12.5px;color:var(--ink-soft);font-weight:500;background:var(--mist);padding:5px 11px;border-radius:100px;}
+  .panel-head .unit-note{font-size:12.5px;color:#fff;font-weight:700;background:var(--coral);padding:5px 11px;border-radius:100px;}
+  .panel-head.stacked{flex-direction:column;align-items:flex-start;}
+  .panel-head.stacked .unit-note{margin-top:2px;}
   .metric-row{display:flex;align-items:center;gap:16px;margin-bottom:13px;}
   .metric-row:last-child{margin-bottom:0;}
   .metric-label{width:168px;flex-shrink:0;font-size:13.5px;font-weight:600;color:var(--ink);}
@@ -384,32 +392,32 @@
     <h2 class="section-title">We pulled up eyecandyads.ca and looked under the hood.</h2>
 
     <div class="audit-grid">
-      <div class="audit-card">
-        <div class="audit-icon tag-red">◐</div>
+      <div class="audit-card sev-bad">
+        <div class="status-tag bad">Bad</div>
         <h3>1 organic visit a month, on 23 keywords</h3>
         <ul>
           <li>Lowest keyword count of any site in this comparison</li>
           <li>Almost nobody finds you through a Google search today</li>
         </ul>
       </div>
-      <div class="audit-card">
-        <div class="audit-icon tag-amber">◑</div>
+      <div class="audit-card sev-rebuild">
+        <div class="status-tag rebuild">Needs Rebuild</div>
         <h3>The homepage is the entire website</h3>
         <ul>
           <li>Value prop, services, and CTA all live on one page</li>
           <li>Media kits, community, and articles have no real content depth behind them</li>
         </ul>
       </div>
-      <div class="audit-card">
-        <div class="audit-icon tag-teal">◒</div>
+      <div class="audit-card sev-improve">
+        <div class="status-tag improve">Needs Improvement</div>
         <h3>Duplicated navigation on every page</h3>
         <ul>
           <li>Full menu repeats three times in the page's underlying code</li>
           <li>Dead weight for mobile speed and page structure</li>
         </ul>
       </div>
-      <div class="audit-card">
-        <div class="audit-icon tag-ink">◓</div>
+      <div class="audit-card sev-bad">
+        <div class="status-tag bad">Bad</div>
         <h3>One meta description for every page</h3>
         <ul>
           <li>Homepage, careers, contact, every media kit — all identical</li>
@@ -435,7 +443,7 @@
 
       <!-- Overall Performance Score -->
       <div class="panel">
-        <div class="panel-head">
+        <div class="panel-head stacked">
           <h3>Overall Performance Score</h3>
           <span class="unit-note">0–100 · higher is better</span>
         </div>
@@ -559,7 +567,7 @@
 
       <!-- CLS -->
       <div class="panel">
-        <div class="panel-head">
+        <div class="panel-head stacked">
           <h3>Cumulative Layout Shift</h3>
           <span class="unit-note">score · lower is better</span>
         </div>
@@ -804,11 +812,11 @@
 
     <div class="expect-grid">
       <div class="expect-card c1">
-        <div class="expect-stat">3–5x</div>
+        <div class="expect-stat">50–100x</div>
         <div class="expect-label">Organic traffic growth, 12 months</div>
         <ul>
-          <li>Typical range for local-service sites moving from one thin page to structured, market-by-market content (industry SEO benchmark)</li>
-          <li>Top Outdoor and Branded Cities already prove the ceiling: 189–251 monthly visits from search alone, on the same medium</li>
+          <li>Starting from just 1 monthly visit today, even 50–100 monthly visits is a 50–100x jump</li>
+          <li>Still below every competitor benchmarked here (41–344 monthly visits) — a realistic, not inflated, target</li>
         </ul>
       </div>
       <div class="expect-card c2">
@@ -852,24 +860,52 @@
         <div>
           <div class="num">01</div>
           <h3>A new website</h3>
+          <ul>
+            <li>Modern, mobile-first design built around your brand and boards</li>
+            <li>Dedicated pages for every market you serve</li>
+            <li>Fast-loading, Core Web Vitals-passing build from day one</li>
+            <li>Clear calls-to-action and lead forms on every page</li>
+            <li>Built to scale as you add new markets and boards</li>
+          </ul>
         </div>
       </div>
       <div class="pillar p2">
         <div>
           <div class="num">02</div>
           <h3>SEO &amp; AI search visibility</h3>
+          <ul>
+            <li>On-page optimization for every service and location page</li>
+            <li>Structured data so Google and AI tools can understand your business</li>
+            <li>A content plan built around what advertisers are actually searching for</li>
+            <li>Technical fixes for the issues flagged in this audit</li>
+            <li>Ongoing monitoring against the competitors benchmarked here</li>
+          </ul>
         </div>
       </div>
       <div class="pillar p3">
         <div>
           <div class="num">03</div>
           <h3>Paid ads that fill the funnel</h3>
+          <ul>
+            <li>Search campaigns targeting advertisers actively looking for board space</li>
+            <li>Retargeting for visitors who don't convert on the first visit</li>
+            <li>Audience targeting refined to your seven Ontario markets</li>
+            <li>Creative built to match the new site's look and feel</li>
+            <li>Budget allocated toward the channels proven to perform</li>
+          </ul>
         </div>
       </div>
       <div class="pillar p4">
         <div>
           <div class="num">04</div>
           <h3>Lead capture &amp; automation</h3>
+          <ul>
+            <li>One inbox for every inquiry — web, phone, and ad clicks</li>
+            <li>Automated follow-up so no lead goes cold</li>
+            <li>Clear tracking on where every lead actually came from</li>
+            <li>Simple handoff into your existing sales process</li>
+            <li>Reporting that shows what's working, month over month</li>
+          </ul>
         </div>
       </div>
     </div>
